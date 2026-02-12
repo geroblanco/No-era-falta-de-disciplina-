@@ -1,9 +1,543 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="es">
 <head>
-  <title>No era falta de disciplina</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>No era falta de disciplina — Ebook</title>
+  <meta name="description" content="Un ebook directo, humano y práctico para quienes siempre se hicieron cargo. Entendé por qué estás cansado de sostener todo y cómo empezar a soltar sin culpa." />
+  <meta name="theme-color" content="#0b0b0f" />
+
+  <meta property="og:title" content="No era falta de disciplina — Ebook" />
+  <meta property="og:description" content="No te enseña a hacer más. Te muestra por qué estás cansado de sostener todo solo y cómo empezar a soltar sin culpa." />
+  <meta property="og:image" content="" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#0a0a0f;
+      --panel:#10101a;
+      --text:#f2f2f2;
+      --muted:#b9b9c6;
+      --line:rgba(255,255,255,.08);
+      --gold:#d4af37;
+      --gold2:#ffdd7a;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 22px;
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 70% -10%, rgba(212,175,55,.22), transparent 55%),
+        radial-gradient(900px 500px at 10% 0%, rgba(255,221,122,.10), transparent 60%),
+        radial-gradient(700px 500px at 90% 60%, rgba(212,175,55,.08), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px 90px}
+    .top{
+      position:sticky;top:0;z-index:50;
+      background:linear-gradient(to bottom, rgba(10,10,15,.95), rgba(10,10,15,.70), transparent);
+      backdrop-filter: blur(8px);
+      padding:10px 0 14px;
+    }
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      max-width:var(--max);margin:0 auto;padding:0 18px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:.2px}
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, var(--gold2), var(--gold));
+      box-shadow: 0 0 18px rgba(212,175,55,.45);
+    }
+    .nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .pill{
+      text-decoration:none;
+      padding:10px 12px;border-radius:999px;
+      border:1px solid rgba(212,175,55,.25);
+      color:rgba(242,242,242,.92);
+      background: rgba(0,0,0,.18);
+      font-weight:700;font-size:13px;
+    }
+    .pill:hover{border-color:rgba(212,175,55,.38)}
+    .btn{
+      appearance:none;border:0;cursor:pointer;text-decoration:none;
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      color:#1a1406;font-weight:900;
+      padding:12px 16px;border-radius:999px;
+      box-shadow: 0 12px 28px rgba(212,175,55,.22);
+      transition: transform .12s ease, filter .12s ease;
+      display:inline-flex;gap:10px;align-items:center;white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); filter:saturate(1.06)}
+    .btn:active{transform: translateY(0px)}
+    .btn.secondary{
+      background:transparent;color:var(--text);
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow:none;font-weight:800;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      margin-top:18px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .nav{display:none}
+    }
+
+    .hero{
+      padding:26px 22px;
+      background: linear-gradient(180deg, rgba(16,16,26,.94), rgba(16,16,26,.68));
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute;inset:-2px;
+      background:
+        radial-gradient(600px 260px at 85% 10%, rgba(212,175,55,.25), transparent 60%),
+        radial-gradient(520px 220px at 10% 20%, rgba(255,221,122,.10), transparent 60%);
+      pointer-events:none;
+    }
+    .kicker{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:8px 10px;border-radius:999px;
+      border:1px solid rgba(212,175,55,.25);
+      background: rgba(212,175,55,.08);
+      color:#f6e7b7;
+      font-weight:800;font-size:13px;
+      margin-bottom:12px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height:1.04;
+      letter-spacing:-.8px;
+    }
+    .accent{color:var(--gold2); text-shadow: 0 0 18px rgba(212,175,55,.20)}
+    .sub{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 70ch;
+    }
+    .bullets{
+      display:grid;gap:10px;
+      margin:14px 0 0;padding:0;list-style:none;
+    }
+    .bullets li{display:flex;gap:10px;align-items:flex-start}
+    .check{
+      width:22px;height:22px;flex:0 0 22px;border-radius:7px;
+      background: rgba(212,175,55,.16);
+      border:1px solid rgba(212,175,55,.35);
+      display:flex;align-items:center;justify-content:center;
+      margin-top:2px;
+    }
+
+    .side{
+      position:sticky;top:92px;
+      display:flex;flex-direction:column;gap:12px;
+    }
+    @media (max-width: 980px){
+      .side{position:relative;top:auto}
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(16,16,26,.92), rgba(16,16,26,.70));
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .card h2{margin:0 0 10px;font-size:18px}
+    .priceRow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:6px}
+    .priceNow{font-size:38px;font-weight:950;color:var(--gold2);letter-spacing:-.6px}
+    .priceWas{font-size:14px;color:rgba(185,185,198,.9);text-decoration:line-through}
+    .meta{font-size:13px;color:var(--muted);margin-top:6px}
+    .divider{height:1px;background:var(--line);margin:14px 0}
+    .trust{
+      display:grid;gap:10px;
+      margin:0;padding:0;list-style:none;
+      font-size:13px;color:rgba(242,242,242,.92);
+    }
+    .trust li{display:flex;gap:10px;align-items:flex-start}
+    .shield{
+      width:22px;height:22px;flex:0 0 22px;border-radius:7px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      display:flex;align-items:center;justify-content:center;
+      margin-top:2px;
+    }
+
+    section.block{margin-top:18px}
+    .block .head{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      margin: 0 0 10px;
+    }
+    .block h3{margin:0;font-size:20px}
+    .muted{color:var(--muted)}
+    .panel{
+      background: linear-gradient(180deg, rgba(15,15,22,.90), rgba(15,15,22,.70));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .cols{display:grid;gap:14px;grid-template-columns: 1fr 1fr;}
+    @media (max-width: 820px){ .cols{grid-template-columns:1fr} }
+
+    .quote{
+      border-left: 3px solid rgba(212,175,55,.55);
+      padding-left: 12px;
+      margin: 10px 0;
+      color: rgba(242,242,242,.95);
+    }
+    .chiprow{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .chip{
+      padding:8px 10px;border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:rgba(242,242,242,.92);
+      font-size:13px;
+    }
+    .chip b{color:var(--gold2)}
+
+    .author{
+      display:flex;gap:14px;align-items:center;flex-wrap:wrap;
+    }
+    .avatar{
+      width:88px;height:88px;border-radius:999px;
+      border:2px solid rgba(212,175,55,.45);
+      background: rgba(0,0,0,.22);
+      box-shadow: 0 0 22px rgba(212,175,55,.16);
+      overflow:hidden;
+      flex: 0 0 88px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .avatar .placeholder{
+      font-weight:900;color: rgba(246,231,183,.85);
+      font-size:12px;text-align:center;padding:10px;line-height:1.2;
+    }
+    .author h4{margin:0;font-size:16px}
+    .author p{margin:6px 0 0;color:var(--muted);font-size:14px;max-width:72ch}
+
+    details{
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:14px;
+      padding:12px 12px;
+      background: rgba(0,0,0,.18);
+      margin:10px 0;
+    }
+    summary{cursor:pointer;font-weight:900}
+    details p{margin:10px 0 0;color:var(--muted)}
+
+    .mobileCta{
+      position:fixed;left:0;right:0;bottom:0;z-index:60;
+      padding:12px 14px;
+      background: linear-gradient(to top, rgba(10,10,15,.98), rgba(10,10,15,.65), transparent);
+      backdrop-filter: blur(8px);
+      display:none;
+    }
+    .mobileCta .row{
+      max-width:var(--max);margin:0 auto;
+      display:flex;gap:10px;align-items:center;justify-content:space-between;
+      padding:10px;border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(16,16,26,.70);
+      box-shadow: var(--shadow);
+    }
+    .mobileCta .txt{display:flex;flex-direction:column;gap:2px}
+    .mobileCta .txt .t{font-weight:950}
+    .mobileCta .txt .s{font-size:12px;color:var(--muted)}
+    @media (max-width: 980px){ .mobileCta{display:block} }
+
+    .toast{
+      position: fixed;left:50%;bottom:92px;transform:translateX(-50%);
+      background: rgba(16,16,26,.96);
+      border:1px solid rgba(212,175,55,.28);
+      padding:10px 12px;border-radius:999px;
+      display:none;gap:10px;align-items:center;
+      box-shadow: var(--shadow);
+      z-index:80;
+      font-size:13px;
+      max-width: calc(100vw - 24px);
+      white-space:nowrap;
+      overflow:hidden;text-overflow:ellipsis;
+    }
+    .toast b{color:var(--gold2)}
+    .foot{margin-top:18px;text-align:center;font-size:12px;color:rgba(185,185,198,.85)}
+    .miniBtns{display:flex;gap:10px;margin-top:10px}
+    .miniBtns button{flex:1}
+  </style>
 </head>
+
 <body>
-  <h1>No era falta de disciplina</h1>
+  <div class="top">
+    <div class="topbar">
+      <div class="brand"><span class="dot"></span> No era falta de disciplina</div>
+      <div class="nav">
+        <a class="pill" href="#autor">Autor</a>
+        <a class="pill" href="#paraquien">Para quién</a>
+        <a class="pill" href="#quevasaleer">Qué vas a leer</a>
+        <a class="pill" href="#faq">FAQ</a>
+        <a class="btn" id="buyTop" href="#" rel="noopener">Comprar ahora →</a>
+      </div>
+      <a class="btn" id="buyTopSmall" href="#" rel="noopener">Comprar →</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="grid">
+      <main class="hero">
+        <div class="kicker">Ebook digital • lectura rápida • impacto profundo</div>
+        <h1>Si siempre fuiste el que <span class="accent">resuelve</span>, te va a pegar.</h1>
+        <p class="sub">
+          No era falta de disciplina. Era cansancio de sostener. Este ebook no te empuja a hacer más:
+          te ayuda a entender el patrón y a empezar a soltar sin culpa.
+        </p>
+        <ul class="bullets">
+          <li><span class="check">✓</span> Entendés por qué la “autoexigencia” te mantiene en modo supervivencia.</li>
+          <li><span class="check">✓</span> Identificás el rol de “el responsable” y el costo invisible de sostener.</li>
+          <li><span class="check">✓</span> Te llevás ejercicios cortos para aplicar sin humo ni teoría eterna.</li>
+        </ul>
+        <div class="divider"></div>
+        <div class="quote">
+          <b>“No estaba sosteniendo un proyecto. Estaba sosteniendo una versión mía.”</b>
+          <div class="muted" style="margin-top:6px">Si esa frase te hace ruido… este libro es para vos.</div>
+        </div>
+        <div class="chiprow">
+          <span class="chip"><b>Ideal</b> si estás cansado mentalmente</span>
+          <span class="chip"><b>Ideal</b> si te cuesta descansar sin culpa</span>
+          <span class="chip"><b>Ideal</b> si siempre cargás de más</span>
+        </div>
+      </main>
+
+      <aside class="side">
+        <div class="card">
+          <h2>Acceso inmediato</h2>
+          <div class="priceRow">
+            <div class="priceNow" id="priceNow">USD 9,90</div>
+            <div class="priceWas" id="priceWas">USD 14,90</div>
+          </div>
+          <div class="meta">Descarga digital • pago seguro • soporte Hotmart</div>
+          <div class="divider"></div>
+          <a class="btn" id="buyMain" href="#" rel="noopener" style="justify-content:center;width:100%">
+            Comprar ahora <span aria-hidden="true">→</span>
+          </a>
+          <div class="miniBtns">
+            <button class="btn secondary" id="copyLink" type="button">Copiar link</button>
+            <button class="btn secondary" id="share" type="button">Compartir</button>
+          </div>
+          <div class="divider"></div>
+          <ul class="trust">
+            <li><span class="shield">🔒</span> Checkout seguro por Hotmart</li>
+            <li><span class="shield">📩</span> Acceso automático tras el pago</li>
+            <li><span class="shield">✅</span> Lectura + ejercicios prácticos</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Bonus</h2>
+          <div class="muted">
+            <br>
+            <br>
+            <b style="color:var(--gold2)">• PDF</b>: “Checklist de señales de carga invisible”
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="block" id="autor">
+      <div class="head">
+        <h3>Sobre el autor</h3>
+        <div class="muted">Quién escribió esto y por qué</div>
+      </div>
+      <div class="panel">
+        <div class="author">
+          <div class="avatar" title="gero foto">
+             <img src="foto-gero.jpg" alt="Foto de Geronimo Blanco Kombolitis" />
+          </div>
+          <div>
+            <h4>Geronimo Blanco Kombolitis</h4>
+            <p>
+              Soy emprendedor y creador de este ebook. Empecé a hacerme cargo muy chico y aprendí a resolver
+              incluso cuando no tenía margen para fallar. Este libro nace de esa experiencia: ponerle nombre al
+              cansancio invisible de sostener todo, y abrir un camino para soltar sin culpa y volver a elegir.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="paraquien">
+      <div class="head">
+        <h3>Para quién es (y para quién no)</h3>
+        <div class="muted">1 minuto para saber si te sirve</div>
+      </div>
+      <div class="panel cols">
+        <div>
+          <h4 style="margin:0 0 8px">✅ Es para vos si…</h4>
+          <ul class="bullets" style="margin:0">
+            <li><span class="check">✓</span> Sentís que todo depende de vos (aunque nadie lo diga).</li>
+            <li><span class="check">✓</span> Te cuesta descansar sin sentir culpa.</li>
+            <li><span class="check">✓</span> Estás cansado mentalmente aunque “todo esté bien”.</li>
+            <li><span class="check">✓</span> Tenés momentos de vacío después de cumplir metas.</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin:0 0 8px">❌ No es para vos si…</h4>
+          <ul class="bullets" style="margin:0">
+            <li><span class="check">—</span> Querés un libro de productividad tipo “hustle”.</li>
+            <li><span class="check">—</span> Buscás “motivación” sin introspección.</li>
+            <li><span class="check">—</span> Querés fórmulas mágicas sin mirarte de frente.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="quevasaleer">
+      <div class="head">
+        <h3>Qué vas a leer</h3>
+        <div class="muted">Pantallazo claro del contenido</div>
+      </div>
+      <div class="panel cols">
+        <div>
+          <h4 style="margin:0 0 8px">Lo que te va a pasar leyendo</h4>
+          <p class="muted" style="margin:0">
+            Vas a identificar el momento en que “resolver” dejó de ser una habilidad y se convirtió en tu identidad.
+            Vas a ver cómo el aplauso silencioso te atrapó, por qué te cargás de más y cómo se siente el cansancio
+            mental que todavía no sabías nombrar.
+          </p>
+          <div class="quote" style="margin-top:12px">
+            “Empezar temprano te hizo fuerte. Pero también te acostumbró a cargar.”
+          </div>
+        </div>
+        <div>
+          <h4 style="margin:0 0 8px">Lo que incluye</h4>
+          <ul class="bullets" style="margin:0">
+            <li><span class="check">✓</span> Capítulos cortos con narrativa directa.</li>
+            <li><span class="check">✓</span> Ejercicios al final para aterrizar lo leído.</li>
+            <li><span class="check">✓</span> Desafío práctico de 7 días (acción real).</li>
+            <li><span class="check">✓</span> Cierre que te deja una dirección (no solo emoción).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="panel" style="text-align:center">
+        <h3 style="margin:0 0 8px">Hoy podés dejar de pelearte con vos.</h3>
+        <p class="muted" style="margin:0 auto 14px;max-width:70ch">
+          No es para “hacer más”. Es para entender por qué estás cansado de sostener y empezar a soltar con conciencia.
+        </p>
+        <a class="btn" id="buyFinal" href="#" rel="noopener">Comprar ahora →</a>
+        <div class="muted" style="margin-top:10px;font-size:13px">Acceso inmediato por Hotmart</div>
+      </div>
+    </section>
+
+    <section class="block" id="faq">
+      <div class="head">
+        <h3>Preguntas frecuentes</h3>
+        <div class="muted">lo típico que te frena</div>
+      </div>
+      <div class="panel">
+        <details>
+          <summary>¿Cómo recibo el ebook?</summary>
+          <p>Después del pago, Hotmart te da acceso inmediato para descargar el material.</p>
+        </details>
+        <details>
+          <summary>¿Sirve si no leo mucho?</summary>
+          <p>Sí. Está escrito con frases cortas y ritmo. Lo fuerte no es lo largo: es lo que te hace ver.</p>
+        </details>
+        <details>
+          <summary>¿Esto reemplaza terapia?</summary>
+          <p>No. Es un ebook de reflexión y práctica personal para entender patrones y tomar acción.</p>
+        </details>
+        <details>
+          <summary>¿Puedo leerlo desde el celular?</summary>
+          <p>Sí, completamente. Ideal en celular, tablet o compu.</p>
+        </details>
+      </div>
+    </section>
+
+    <div class="foot">
+      © <span id="year"></span> — No era falta de disciplina. Todos los derechos reservados.
+    </div>
+  </div>
+
+  <div class="mobileCta">
+    <div class="row">
+      <div class="txt">
+        <div class="t">No era falta de disciplina</div>
+        <div class="s">Acceso inmediato • <span id="mPrice">USD 9,90</span></div>
+      </div>
+      <a class="btn" id="buyMobile" href="#" rel="noopener">Comprar →</a>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Link copiado: <b id="toastLink"></b></div>
+
+  <script>
+    const HOTMART_CHECKOUT_URL = "https://pay.hotmart.com/U104384392C";
+    const PRICE_NOW = "USD 9,90";
+    const PRICE_WAS = "USD 14,90";
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("priceNow").textContent = PRICE_NOW;
+    document.getElementById("priceWas").textContent = PRICE_WAS;
+    document.getElementById("mPrice").textContent = PRICE_NOW;
+
+    ["buyTop","buyTopSmall","buyMain","buyFinal","buyMobile"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.href = HOTMART_CHECKOUT_URL;
+    });
+
+    const toast = document.getElementById("toast");
+    const toastLink = document.getElementById("toastLink");
+    function showToast(text){
+      toastLink.textContent = text.replace(/^https?:\/\//,'');
+      toast.style.display = "flex";
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(()=> toast.style.display="none", 2400);
+    }
+
+    document.getElementById("copyLink").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(HOTMART_CHECKOUT_URL);
+        showToast(HOTMART_CHECKOUT_URL);
+      }catch(e){
+        prompt("Copiá el link:", HOTMART_CHECKOUT_URL);
+      }
+    });
+
+    document.getElementById("share").addEventListener("click", async () => {
+      const data = {
+        title: "No era falta de disciplina — Ebook",
+        text: "No era falta de disciplina. Era cansancio de sostener. Acceso inmediato.",
+        url: HOTMART_CHECKOUT_URL
+      };
+      try{
+        if(navigator.share){
+          await navigator.share(data);
+        }else{
+          await navigator.clipboard.writeText(HOTMART_CHECKOUT_URL);
+          showToast(HOTMART_CHECKOUT_URL);
+        }
+      }catch(e){}
+    });
+  </script>
 </body>
 </html>
