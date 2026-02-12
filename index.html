@@ -293,7 +293,6 @@
         <a class="pill" href="#paraquien">Para quién</a>
         <a class="pill" href="#quevasaleer">Qué vas a leer</a>
         <a class="pill" href="#faq">FAQ</a>
-        <a class="btn" id="buyTop" href="#" rel="noopener"> Quiero descargar ahora→</a>
       </div>
       <a class="btn" id="buyTopSmall" href="#" rel="noopener">Quiero descargar ahora →</a>
     </div>
@@ -303,17 +302,50 @@
     <div class="grid">
       <main class="hero">
         <div class="kicker">Ebook digital • lectura rápida • impacto profundo</div>
-        <h1>Si siempre fuiste el que <span class="accent">resuelve</span>, te va a pegar.</h1>
+        <h1>NO ERA FALTA DE <span class="accent">DISCIPLINA:</span> ERA FALTA DE MÉTODO</h1>
         <p class="sub">
-          No era falta de disciplina. Era cansancio de sostener. Este ebook no te empuja a hacer más:
-          te ayuda a entender el patrón y a empezar a soltar sin culpa.
+          Aprendé a transformar tu caos mental en acción 
+          constante — sin depender de la motivación, sin culpa y sin “empezar el lunes”.
         </p>
         <ul class="bullets">
           <li><span class="check">✓</span> Entendés por qué la “autoexigencia” te mantiene en modo supervivencia.</li>
           <li><span class="check">✓</span> Identificás el rol de “el responsable” y el costo invisible de sostener.</li>
           <li><span class="check">✓</span> Te llevás ejercicios cortos para aplicar sin humo ni teoría eterna.</li>
         </ul>
-        <div class="divider"></div>
+        <section class="video-section">
+  <h3 class="video-title">Mirá este video de 60 segundos antes de seguir</h3>
+
+  <!-- OPCIÓN B: Video MP4 propio (descomentá si usás archivo .mp4)
+  <div class="video-wrapper">
+    <video controls playsinline preload="metadata" poster="TU_POSTER.jpg">
+      <source src="TU_VIDEO.mp4" type="video/mp4" />
+      Tu navegador no soporta video HTML5.
+    </video>
+  </div>
+  -->
+</section>
+
+<style>
+  .video-section { margin: 24px 0; }
+  .video-title { margin-bottom: 12px; font-size: 1.15rem; }
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .video-wrapper iframe,
+  .video-wrapper video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
         <div class="quote">
           <b>“No estaba sosteniendo un proyecto. Estaba sosteniendo una versión mía.”</b>
           <div class="muted" style="margin-top:6px">Si esa frase te hace ruido… este libro es para vos.</div>
@@ -450,6 +482,43 @@
     document.getElementById("cuposPremium").textContent = cupos;
   }, 5000);
 </script>
+          <a id="waButton" class="wa-btn" href="#" target="_blank" rel="noopener">
+  QUIERO MI CAPÍTULO GRATIS POR WHATSAPP
+</a>
+
+<p class="wa-note">Te respondo por WhatsApp y te lo envío enseguida.</p>
+
+<style>
+  .wa-btn{
+    display:inline-block;
+    padding:14px 18px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:700;
+    font-size:1rem;
+    line-height:1;
+    background:#25D366; /* WhatsApp green */
+    color:#0b0b0b;
+    transition:transform .08s ease;
+  }
+  .wa-btn:hover{ transform: translateY(-1px); }
+  .wa-note{ margin-top:10px; opacity:.8; font-size:.95rem; }
+</style>
+
+<script>
+  
+  const WHATSAPP_NUMBER = "5492994274546"; 
+  
+
+  const WHATSAPP_MESSAGE = "Hola Gero, quiero el capítulo gratis de *No era falta de disciplina*.";
+  // =============================
+
+  const encodedMsg = encodeURIComponent(WHATSAPP_MESSAGE);
+  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+
+  document.getElementById("waButton").setAttribute("href", waUrl);
+</script>
+Cómo lo usás (rápido)
 
 
           <a class="btn" id="buyMain" href="#" rel="noopener" style="justify-content:center;width:100%">
