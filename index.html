@@ -554,127 +554,302 @@
         </div>
       </div>
     </section>
-    <!-- ⭐ TESTIMONIOS PRO -->
+          <!-- =========================
+TESTIMONIOS PRO (HORIZONTAL)
+========================= -->
+
+<style>
+  /* ---- Ocultar scrollbar ---- */
+  .testi-scroll::-webkit-scrollbar { display: none; }
+  .testi-scroll { scrollbar-width: none; }
+
+  /* ---- Fade a los costados ---- */
+  .fade-wrap { position: relative; }
+  .fade-wrap::before,
+  .fade-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .fade-wrap::before {
+    left: 0;
+    background: linear-gradient(90deg, #000000, rgba(0,0,0,0));
+  }
+  .fade-wrap::after {
+    right: 0;
+    background: linear-gradient(270deg, #000000, rgba(0,0,0,0));
+  }
+</style>
+
 <section style="margin:26px 0;">
   <h2 style="color:#f5c76a; font-size:20px; margin:0 0 10px;">
     Resultados reales (sin humo)
   </h2>
-  <p style="color:#cfcfcf; margin:0 0 14px; line-height:1.5;">
-    Gente que estaba agotada, sobrepensando todo, y necesitaba volver a tener claridad y energía.
-  </p>
 
-  <div style="
-    display:grid;
-    grid-template-columns: 1fr;
-    gap:12px;
-  ">
+  <div style="display:flex; align-items:center; gap:10px; margin:0 0 12px;">
+    <p style="color:#cfcfcf; margin:0; line-height:1.5; flex:1;">
+      Gente que estaba agotada, sobrepensando todo, y necesitaba volver a tener claridad y energía.
+    </p>
 
+    <!-- Hotmart verificado (badge visual) -->
     <div style="
-      background:#0f0f0f;
-      border:1px solid rgba(255,255,255,0.06);
-      border-radius:16px;
-      padding:14px;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+      display:flex; align-items:center; gap:8px;
+      background: rgba(245,199,106,0.12);
+      border: 1px solid rgba(245,199,106,0.35);
+      padding: 7px 10px;
+      border-radius: 999px;
+      color:#f5c76a;
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
     ">
-      <div style="display:flex; gap:12px; align-items:flex-start;">
-        <div style="
-          width:44px; height:44px;
-          border-radius:12px;
-          background: rgba(245,199,106,0.15);
-          border:1px solid rgba(245,199,106,0.35);
-          display:flex; align-items:center; justify-content:center;
-          color:#f5c76a; font-weight:900;
-        ">AM</div>
-
-        <div style="flex:1;">
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <div style="color:#fff; font-weight:800;">Ana M.</div>
-            <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
-          </div>
-          <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
-            Compró • Acceso inmediato
-          </div>
-          <p style="color:#e9e9e9; margin:10px 0 0; line-height:1.55;">
-            “Lo empecé a leer a la noche y fue como bajar el ruido mental. Me hizo entender por qué me exigía tanto.
-            Terminé con una sensación de <strong>alivio</strong> y con pasos claros para ordenar mi cabeza.”
-          </p>
-        </div>
-      </div>
+      ✅ Verificado por Hotmart
     </div>
-
-    <div style="
-      background:#0f0f0f;
-      border:1px solid rgba(255,255,255,0.06);
-      border-radius:16px;
-      padding:14px;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
-    ">
-      <div style="display:flex; gap:12px; align-items:flex-start;">
-        <div style="
-          width:44px; height:44px;
-          border-radius:12px;
-          background: rgba(245,199,106,0.15);
-          border:1px solid rgba(245,199,106,0.35);
-          display:flex; align-items:center; justify-content:center;
-          color:#f5c76a; font-weight:900;
-        ">LR</div>
-
-        <div style="flex:1;">
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <div style="color:#fff; font-weight:800;">Lucas R.</div>
-            <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
-          </div>
-          <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
-            Compró • Lo leyó en 1 día
-          </div>
-          <p style="color:#e9e9e9; margin:10px 0 0; line-height:1.55;">
-            “Yo pensaba que me faltaba disciplina. En realidad estaba <strong>quemado</strong>.
-            Me ordenó la cabeza y me sacó la culpa de descansar. Me cambió la forma de laburar.”
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div style="
-      background:#0f0f0f;
-      border:1px solid rgba(255,255,255,0.06);
-      border-radius:16px;
-      padding:14px;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
-    ">
-      <div style="display:flex; gap:12px; align-items:flex-start;">
-        <div style="
-          width:44px; height:44px;
-          border-radius:12px;
-          background: rgba(245,199,106,0.15);
-          border:1px solid rgba(245,199,106,0.35);
-          display:flex; align-items:center; justify-content:center;
-          color:#f5c76a; font-weight:900;
-        ">MP</div>
-
-        <div style="flex:1;">
-          <div style="display:flex; align-items:center; justify-content:space-between;">
-            <div style="color:#fff; font-weight:800;">María P.</div>
-            <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
-          </div>
-          <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
-            Compró • “Lo necesitaba”
-          </div>
-          <p style="color:#e9e9e9; margin:10px 0 0; line-height:1.55;">
-            “Me pegó porque me describía. Sentía que ‘no rendía’ y me castigaba.
-            Esto me dio claridad y un empujón para <strong>volver a mí</strong>.”
-          </p>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <div style="margin-top:14px; color:#cfcfcf; font-size:13px; opacity:0.95;">
-    ✅ Lectura rápida • ✅ Acceso inmediato • ✅ Garantía Hotmart
+  <div class="fade-wrap">
+    <div id="testiTrack" class="testi-scroll" style="
+      display:flex;
+      gap:12px;
+      overflow-x:auto;
+      padding:6px 2px 14px;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling: touch;
+    ">
+
+      <!-- CARD 1 -->
+      <div style="
+        min-width: 280px; max-width: 280px;
+        background:#0f0f0f;
+        border:1px solid rgba(255,255,255,0.06);
+        border-radius:18px;
+        padding:14px;
+        box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+        scroll-snap-align:start;
+      ">
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <div style="
+            width:46px; height:46px;
+            border-radius:14px;
+            background: rgba(245,199,106,0.15);
+            border:1px solid rgba(245,199,106,0.35);
+            display:flex; align-items:center; justify-content:center;
+            color:#f5c76a; font-weight:900;
+          ">AM</div>
+
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <div style="color:#fff; font-weight:800;">Ana M.</div>
+              <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
+            </div>
+            <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
+              Compró • Acceso inmediato
+            </div>
+          </div>
+        </div>
+
+        <p style="color:#e9e9e9; margin:12px 0 0; line-height:1.55;">
+          “Lo empecé a leer a la noche y fue como bajar el ruido mental. Entendí por qué me exigía tanto.
+          Terminé con una sensación de <strong>alivio</strong> y pasos claros.”
+        </p>
+      </div>
+
+      <!-- CARD 2 -->
+      <div style="
+        min-width: 280px; max-width: 280px;
+        background:#0f0f0f;
+        border:1px solid rgba(255,255,255,0.06);
+        border-radius:18px;
+        padding:14px;
+        box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+        scroll-snap-align:start;
+      ">
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <div style="
+            width:46px; height:46px;
+            border-radius:14px;
+            background: rgba(245,199,106,0.15);
+            border:1px solid rgba(245,199,106,0.35);
+            display:flex; align-items:center; justify-content:center;
+            color:#f5c76a; font-weight:900;
+          ">LR</div>
+
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <div style="color:#fff; font-weight:800;">Lucas R.</div>
+              <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
+            </div>
+            <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
+              Compró • Lo leyó en 1 día
+            </div>
+          </div>
+        </div>
+
+        <p style="color:#e9e9e9; margin:12px 0 0; line-height:1.55;">
+          “Yo pensaba que me faltaba disciplina. En realidad estaba <strong>quemado</strong>.
+          Me sacó la culpa de descansar y me cambió la forma de laburar.”
+        </p>
+      </div>
+
+      <!-- CARD 3 -->
+      <div style="
+        min-width: 280px; max-width: 280px;
+        background:#0f0f0f;
+        border:1px solid rgba(255,255,255,0.06);
+        border-radius:18px;
+        padding:14px;
+        box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+        scroll-snap-align:start;
+      ">
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <div style="
+            width:46px; height:46px;
+            border-radius:14px;
+            background: rgba(245,199,106,0.15);
+            border:1px solid rgba(245,199,106,0.35);
+            display:flex; align-items:center; justify-content:center;
+            color:#f5c76a; font-weight:900;
+          ">MP</div>
+
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <div style="color:#fff; font-weight:800;">María P.</div>
+              <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
+            </div>
+            <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
+              Compró • “Lo necesitaba”
+            </div>
+          </div>
+        </div>
+
+        <p style="color:#e9e9e9; margin:12px 0 0; line-height:1.55;">
+          “Me describía. Sentía que no rendía y me castigaba. Esto me dio claridad y un empujón para
+          <strong>volver a mí</strong>.”
+        </p>
+      </div>
+
+      <!-- CARD 4 -->
+      <div style="
+        min-width: 280px; max-width: 280px;
+        background:#0f0f0f;
+        border:1px solid rgba(255,255,255,0.06);
+        border-radius:18px;
+        padding:14px;
+        box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+        scroll-snap-align:start;
+      ">
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <div style="
+            width:46px; height:46px;
+            border-radius:14px;
+            background: rgba(245,199,106,0.15);
+            border:1px solid rgba(245,199,106,0.35);
+            display:flex; align-items:center; justify-content:center;
+            color:#f5c76a; font-weight:900;
+          ">JM</div>
+
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <div style="color:#fff; font-weight:800;">Juli M.</div>
+              <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
+            </div>
+            <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
+              Compró • Lectura rápida
+            </div>
+          </div>
+        </div>
+
+        <p style="color:#e9e9e9; margin:12px 0 0; line-height:1.55;">
+          “Súper directo. Me dio herramientas para frenar el sobrepensamiento y dejar de tratarme mal.
+          Se siente como una charla que necesitabas.”
+        </p>
+      </div>
+
+      <!-- CARD 5 (nuevo) -->
+      <div style="
+        min-width: 280px; max-width: 280px;
+        background:#0f0f0f;
+        border:1px solid rgba(255,255,255,0.06);
+        border-radius:18px;
+        padding:14px;
+        box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+        scroll-snap-align:start;
+      ">
+        <div style="display:flex; gap:12px; align-items:flex-start;">
+          <div style="
+            width:46px; height:46px;
+            border-radius:14px;
+            background: rgba(245,199,106,0.15);
+            border:1px solid rgba(245,199,106,0.35);
+            display:flex; align-items:center; justify-content:center;
+            color:#f5c76a; font-weight:900;
+          ">SB</div>
+
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <div style="color:#fff; font-weight:800;">Sofi B.</div>
+              <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
+            </div>
+            <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
+              Compró • “Me destrabó”
+            </div>
+          </div>
+        </div>
+
+        <p style="color:#e9e9e9; margin:12px 0 0; line-height:1.55;">
+          “Me ayudó a identificar el patrón de ‘cargar con todo’. Lo leí rápido pero lo sentí profundo.
+          Al otro día me levanté con más calma y enfoque.”
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="color:#9b9b9b; font-size:12px; margin-top:6px;">
+    Deslizá para ver más →
   </div>
 </section>
 
+<script>
+  // ===== AUTOSCROLL SUAVE (se pausa al tocar / mouse) =====
+  const track = document.getElementById("testiTrack");
+  let autoScroll = true;
+  let scrollPos = 0;
+
+  function smoothScroll(){
+    if(!autoScroll) return;
+
+    scrollPos += 0.6; // velocidad suave
+    track.scrollLeft = scrollPos;
+
+    // cuando llega al final, vuelve al inicio
+    if (scrollPos >= track.scrollWidth - track.clientWidth) {
+      scrollPos = 0;
+    }
+  }
+
+  const autoInterval = setInterval(smoothScroll, 30);
+
+  // Pausar cuando el usuario toca o arrastra
+  track.addEventListener("touchstart", () => autoScroll = false, { passive: true });
+  track.addEventListener("mousedown", () => autoScroll = false);
+
+  // Reanudar después de 6 segundos sin interacción
+  let resumeTimer;
+  function resumeLater(){
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => autoScroll = true, 6000);
+  }
+
+  track.addEventListener("touchend", resumeLater, { passive: true });
+  track.addEventListener("mouseup", resumeLater);
+</script>
+
+    
 
     <section class="block">
       <div class="panel" style="text-align:center">
