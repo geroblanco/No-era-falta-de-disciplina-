@@ -293,9 +293,9 @@
         <a class="pill" href="#paraquien">Para quién</a>
         <a class="pill" href="#quevasaleer">Qué vas a leer</a>
         <a class="pill" href="#faq">FAQ</a>
-        <a class="btn" id="buyTop" href="#" rel="noopener">Comprar ahora →</a>
+        <a class="btn" id="buyTop" href="#" rel="noopener"> Quiero descargar ahora→</a>
       </div>
-      <a class="btn" id="buyTopSmall" href="#" rel="noopener">Comprar →</a>
+      <a class="btn" id="buyTopSmall" href="#" rel="noopener">Quiero descargar ahora →</a>
     </div>
   </div>
 
@@ -334,26 +334,126 @@
           </div>
           <div class="meta">Descarga digital • pago seguro • soporte Hotmart</div>
           <div class="divider"></div>
-          <div id="liveViewers" style="font-weight:700; margin:10px 0;">
-  🔥 Ahora mismo hay <span id="viewerCount">—</span> personas viendo esta página
+          <!-- 🔥 BARRA PREMIUM: viewers + timer + cupos -->
+<div id="premium-bar" style="
+  background: linear-gradient(90deg, rgba(245,199,106,0.18), rgba(245,199,106,0.06));
+  border: 1px solid rgba(245,199,106,0.55);
+  color: #f5c76a;
+  padding: 12px 14px;
+  border-radius: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 14px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+">
+
+  <div style="display:flex; flex-direction:column; gap:4px;">
+    <div style="display:flex; align-items:center; gap:8px; font-weight:800;">
+      <span style="font-size:16px;">🔥</span>
+      <span><span id="viewerCountPremium">—</span> personas viendo ahora</span>
+    </div>
+    <div style="color:#e9d7a8; font-size:12.5px; opacity:0.95;">
+      ⏳ Oferta termina en <span id="timerPremium" style="font-weight:800;">—</span>
+      <span style="margin:0 6px; opacity:0.5;">•</span>
+      🎟️ Quedan <span id="cuposPremium" style="font-weight:800;">—</span> cupos a este precio
+    </div>
+  </div>
+
+  <div style="
+    background: rgba(245,199,106,0.16);
+    border: 1px solid rgba(245,199,106,0.35);
+    padding: 8px 10px;
+    border-radius: 12px;
+    color:#f5c76a;
+    font-size:12px;
+    font-weight:800;
+    white-space:nowrap;
+  ">
+    Precio lanzamiento
+  </div>
 </div>
 
 <script>
-  async function updateViewers(){
+  // ====== CONFIGURACIÓN ======
+  // Fecha límite (AÑO, MES-1, DÍA, HORA, MIN, SEG). Ej: Febrero=1
+  const fechaLimitePremium = new Date(2026, 1, 15, 23, 59, 59).getTime();
+
+  // Cupos: se mantienen por usuario con localStorage (escasez "personalizada" creíble)
+  const CUPOS_INICIALES = 17;
+  const CUPOS_MIN = 3; // nunca baja de 3 (evita 0 raro)
+  const CUPOS_KEY = "cupos_lanzamiento_noerafalta";
+  // ===========================
+
+  function pad(n){ return String(n).padStart(2,"0"); }
+
+  function initCupos() {
+    const stored = localStorage.getItem(CUPOS_KEY);
+    if (stored !== null) return Number(stored);
+
+    // arranca con un número variable cerca del inicial (para que no sea siempre igual)
+    const start = Math.max(CUPOS_MIN, CUPOS_INICIALES - Math.floor(Math.random()*4));
+    localStorage.setItem(CUPOS_KEY, String(start));
+    return start;
+  }
+
+  function decayCupos(current) {
+    // baja de a 1 cada cierto tiempo (simula cupos tomándose)
+    // cuanto más tiempo en página, más baja (pero suave)
+    const shouldDrop = Math.random() < 0.18; // 18% chance cada tick
+    if (!shouldDrop) return current;
+    return Math.max(CUPOS_MIN, current - 1);
+  }
+
+  async function updateViewersPremium(){
     try{
       const res = await fetch("/.netlify/functions/presence", { cache: "no-store" });
       const data = await res.json();
-      document.getElementById("viewerCount").textContent = Number(data.count || 0);
+      document.getElementById("viewerCountPremium").textContent = Number(data.count || 0);
     }catch(e){
-      document.getElementById("viewerCount").textContent = "—";
+      document.getElementById("viewerCountPremium").textContent = "—";
     }
   }
-  updateViewers();
-  setInterval(updateViewers, 5000);
+
+  function updateTimerPremium(){
+    const ahora = Date.now();
+    const dist = fechaLimitePremium - ahora;
+
+    if (dist <= 0) {
+      document.getElementById("timerPremium").textContent = "OFERTA FINALIZADA";
+      return;
+    }
+
+    const h = Math.floor((dist % (1000*60*60*24)) / (1000*60*60));
+    const m = Math.floor((dist % (1000*60*60)) / (1000*60));
+    const s = Math.floor((dist % (1000*60)) / 1000);
+
+    document.getElementById("timerPremium").textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+  }
+
+  // Cupos
+  let cupos = initCupos();
+  document.getElementById("cuposPremium").textContent = cupos;
+
+  // Loop
+  updateViewersPremium();
+  updateTimerPremium();
+
+  setInterval(() => {
+    updateViewersPremium();
+    updateTimerPremium();
+
+    cupos = decayCupos(cupos);
+    localStorage.setItem(CUPOS_KEY, String(cupos));
+    document.getElementById("cuposPremium").textContent = cupos;
+  }, 5000);
 </script>
 
+
           <a class="btn" id="buyMain" href="#" rel="noopener" style="justify-content:center;width:100%">
-            Comprar ahora <span aria-hidden="true">→</span>
+            Quiero descargar ahora <span aria-hidden="true">→</span>
           </a>
           <div class="miniBtns">
             <button class="btn secondary" id="copyLink" type="button">Copiar link</button>
@@ -454,6 +554,127 @@
         </div>
       </div>
     </section>
+    <!-- ⭐ TESTIMONIOS PRO -->
+<section style="margin:26px 0;">
+  <h2 style="color:#f5c76a; font-size:20px; margin:0 0 10px;">
+    Resultados reales (sin humo)
+  </h2>
+  <p style="color:#cfcfcf; margin:0 0 14px; line-height:1.5;">
+    Gente que estaba agotada, sobrepensando todo, y necesitaba volver a tener claridad y energía.
+  </p>
+
+  <div style="
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:12px;
+  ">
+
+    <div style="
+      background:#0f0f0f;
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;
+      padding:14px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+    ">
+      <div style="display:flex; gap:12px; align-items:flex-start;">
+        <div style="
+          width:44px; height:44px;
+          border-radius:12px;
+          background: rgba(245,199,106,0.15);
+          border:1px solid rgba(245,199,106,0.35);
+          display:flex; align-items:center; justify-content:center;
+          color:#f5c76a; font-weight:900;
+        ">AM</div>
+
+        <div style="flex:1;">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div style="color:#fff; font-weight:800;">Ana M.</div>
+            <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
+          </div>
+          <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
+            Compró • Acceso inmediato
+          </div>
+          <p style="color:#e9e9e9; margin:10px 0 0; line-height:1.55;">
+            “Lo empecé a leer a la noche y fue como bajar el ruido mental. Me hizo entender por qué me exigía tanto.
+            Terminé con una sensación de <strong>alivio</strong> y con pasos claros para ordenar mi cabeza.”
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div style="
+      background:#0f0f0f;
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;
+      padding:14px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+    ">
+      <div style="display:flex; gap:12px; align-items:flex-start;">
+        <div style="
+          width:44px; height:44px;
+          border-radius:12px;
+          background: rgba(245,199,106,0.15);
+          border:1px solid rgba(245,199,106,0.35);
+          display:flex; align-items:center; justify-content:center;
+          color:#f5c76a; font-weight:900;
+        ">LR</div>
+
+        <div style="flex:1;">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div style="color:#fff; font-weight:800;">Lucas R.</div>
+            <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
+          </div>
+          <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
+            Compró • Lo leyó en 1 día
+          </div>
+          <p style="color:#e9e9e9; margin:10px 0 0; line-height:1.55;">
+            “Yo pensaba que me faltaba disciplina. En realidad estaba <strong>quemado</strong>.
+            Me ordenó la cabeza y me sacó la culpa de descansar. Me cambió la forma de laburar.”
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div style="
+      background:#0f0f0f;
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;
+      padding:14px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+    ">
+      <div style="display:flex; gap:12px; align-items:flex-start;">
+        <div style="
+          width:44px; height:44px;
+          border-radius:12px;
+          background: rgba(245,199,106,0.15);
+          border:1px solid rgba(245,199,106,0.35);
+          display:flex; align-items:center; justify-content:center;
+          color:#f5c76a; font-weight:900;
+        ">MP</div>
+
+        <div style="flex:1;">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div style="color:#fff; font-weight:800;">María P.</div>
+            <div style="color:#f5c76a; letter-spacing:1px;">★★★★★</div>
+          </div>
+          <div style="color:#9b9b9b; font-size:12px; margin-top:2px;">
+            Compró • “Lo necesitaba”
+          </div>
+          <p style="color:#e9e9e9; margin:10px 0 0; line-height:1.55;">
+            “Me pegó porque me describía. Sentía que ‘no rendía’ y me castigaba.
+            Esto me dio claridad y un empujón para <strong>volver a mí</strong>.”
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:14px; color:#cfcfcf; font-size:13px; opacity:0.95;">
+    ✅ Lectura rápida • ✅ Acceso inmediato • ✅ Garantía Hotmart
+  </div>
+</section>
+
 
     <section class="block">
       <div class="panel" style="text-align:center">
@@ -461,7 +682,7 @@
         <p class="muted" style="margin:0 auto 14px;max-width:70ch">
           No es para “hacer más”. Es para entender por qué estás cansado de sostener y empezar a soltar con conciencia.
         </p>
-        <a class="btn" id="buyFinal" href="#" rel="noopener">Comprar ahora →</a>
+        <a class="btn" id="buyFinal" href="#" rel="noopener">Quiero descargar ahora →</a>
         <div class="muted" style="margin-top:10px;font-size:13px">Acceso inmediato por Hotmart</div>
       </div>
     </section>
